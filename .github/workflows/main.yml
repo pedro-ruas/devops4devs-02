@@ -8,7 +8,16 @@ jobs:
   CI:
     runs-on: ubuntu-latest
     steps:
-      - name: image-building
+      - name: Main code Ceckout
+        uses: actions/checkout@v4.1.7
+      
+      - name: Docker Login
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      
+      - name: Container image building
         run: echo "Build app image"
       - name: image-publishing
         run: echo "Publish image to Docker Hub"
