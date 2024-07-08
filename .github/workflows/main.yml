@@ -1,0 +1,20 @@
+name: CI-CD
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+    steps:
+      - name: image-building
+        run: echo "Build app image"
+      - name: image-publishing
+        run: echo "Publish image to Docker Hub"
+
+  CD:
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy
+        run: echo "Application deploy"
