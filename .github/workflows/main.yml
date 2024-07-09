@@ -17,10 +17,15 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
-      - name: Container image building
-        run: echo "Build app image"
-      - name: image-publishing
-        run: echo "Publish image to Docker Hub"
+      - name: Docker Image Build and Push to DockerHub
+        uses: docker/build-push-action@v6.2.0
+        with:
+          context: ./src
+          push: true
+          file: ./src/Review-Filmes.Web/Dockerfile
+          tags: |
+            pjruas/movies-review:v4{{ github.run_number }}
+            pjruas/movies-review:latest
 
   CD:
     runs-on: ubuntu-latest
