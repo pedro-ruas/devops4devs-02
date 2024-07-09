@@ -24,7 +24,7 @@ jobs:
           push: true
           file: ./src/Review-Filmes.Web/Dockerfile
           tags: |
-            pjruas/movies-review:v4{{ github.run_number }}
+            pjruas/movies-review:v${{ github.run_number }}
             pjruas/movies-review:latest
 
   CD:
